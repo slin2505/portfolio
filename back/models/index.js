@@ -13,7 +13,7 @@ const association = () => {
   Project.hasMany(Comment, { foreignKey: "project_id" });
   Project.hasMany(ProjectLike, { foreignKey: "project_id" });
   Project.belongsToMany(Tag, {
-    through: "project_&_tag",
+    through: "project_and_tag",
     foreignKey: "project_id",
     otherKey: "tag_id",
   });
@@ -24,7 +24,7 @@ const association = () => {
 
   // Tag Association
   Tag.belongsToMany(Project, {
-    through: "project_&_tag",
+    through: "project_and_tag",
     foreignKey: "tag_id",
     otherKey: "project_id",
   });

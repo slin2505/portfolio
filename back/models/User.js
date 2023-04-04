@@ -19,7 +19,6 @@ const User = db.define("user", {
 
   name: {
     type: DataTypes.STRING,
-    validate: { isAlpha: true },
     allowNull: false,
     unique: true,
   },

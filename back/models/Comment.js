@@ -12,7 +12,6 @@ const Comment = db.define("comment", {
 
   content: {
     type: DataTypes.TEXT,
-    validate: { isAlpha: true },
     allowNull: false,
   },
 });

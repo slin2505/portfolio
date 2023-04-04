@@ -42,7 +42,6 @@ export const createProject = (req, res) => {
   if (req.file) {
     projectImage = `images/${req.file.filename}`;
   }
-
   const newProject = {
     name: req.body.name,
     desc: req.body.desc,

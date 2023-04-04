@@ -12,26 +12,22 @@ const Project = db.define("project", {
 
   name: {
     type: DataTypes.STRING,
-    validate: { isAlpha: true },
     allowNull: false,
     unique: true,
   },
 
   image: {
     type: DataTypes.STRING,
-    validate: { isAlpha: true },
     allowNull: false,
   },
 
   desc: {
     type: DataTypes.TEXT,
-    validate: { isAlpha: true },
     allowNull: false,
   },
 
   link: {
     type: DataTypes.STRING,
-    validate: { isAlpha: true },
     allowNull: false,
     isUrl: true,
   },

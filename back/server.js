@@ -2,6 +2,8 @@ import express from "express";
 import cors from "cors";
 import * as dotenv from "dotenv";
 import db from "./config/db.js";
+import path from "path";
+import { fileURLToPath } from "url";
 import userRoutes from "./routes/userRoutes.js";
 import projectRoutes from "./routes/projectRoutes.js";
 import projectLikeRoutes from "./routes/projectLikeRoutes.js";
@@ -30,10 +32,14 @@ app.use(
   })
 );
 
+// Dossier Images
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+app.use("/images", express.static(path.join(__dirname, "images")));
+
 // Routes
 app.use("/user", userRoutes);
 app.use("/project", projectRoutes);
-app.use("/project_like", projectLikeRoutes);
+app.use("/", projectLikeRoutes);
 app.use("/tag", tagRoutes);
 app.use("/comment", commentRoutes);
 

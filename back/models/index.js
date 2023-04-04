@@ -10,8 +10,11 @@ const association = () => {
   Comment.belongsTo(Project, { foreignKey: "project_id" });
 
   // Project Association
-  Project.hasMany(Comment, { foreignKey: "project_id" });
-  Project.hasMany(ProjectLike, { foreignKey: "project_id" });
+  Project.hasMany(Comment, { foreignKey: "project_id", onDelete: "CASCADE" });
+  Project.hasMany(ProjectLike, {
+    foreignKey: "project_id",
+    onDelete: "CASCADE",
+  });
   Project.belongsToMany(Tag, {
     through: "project_and_tag",
     foreignKey: "project_id",
@@ -30,7 +33,7 @@ const association = () => {
   });
 
   // User Association
-  User.hasMany(Comment, { foreignKey: "user_id" });
-  User.hasMany(ProjectLike, { foreignKey: "user_id" });
+  User.hasMany(Comment, { foreignKey: "user_id", onDelete: "CASCADE" });
+  User.hasMany(ProjectLike, { foreignKey: "user_id", onDelete: "CASCADE" });
 };
 export default association;

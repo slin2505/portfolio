@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 // Auth
 export const signUp = (req, res) => {
   if (req.body.password === undefined) {
-    return res.status(400).json({ err });
+    return res.status(400).json({ err: "Password can't be empty" });
   }
   // hash using bcrypt lib
   bcrypt
@@ -41,9 +41,9 @@ export const signIn = (req, res) => {
               return res.status(200).json({
                 userId: user.id,
                 token: jwt.sign(
-                  { userId: user.id },
+                  { userId: user.id, isAdmin: user.is_admin },
                   process.env.passwordToken,
-                  { expiresIn: "24h" }
+                  { expiresIn: "48h" }
                 ),
               });
             }

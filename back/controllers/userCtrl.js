@@ -19,7 +19,7 @@ export const signUp = (req, res) => {
 
       // create User
       User.create(newUser)
-        .then(() => res.status(201).json({ message: "User created." }))
+        .then(() => res.status(201).json({ msg: "User created." }))
         .catch((err) => res.status(400).json({ err }));
     })
     .catch((err) => res.status(500).json({ err }));
@@ -82,27 +82,20 @@ export const updateUser = (req, res) => {
     bcrypt.hash(req.body.password, 10).then((hash) => {
       userProfile.password = hash;
       User.update(userProfile, { where: { id: req.params.id } })
-        .then(() => res.status(200).json({ message: "User Updated." }))
+        .then(() => res.status(200).json({ msg: "User Updated." }))
         .catch((err) => res.status(400).json({ err }));
     });
   }
   // no password case
   else {
     User.update(userProfile, { where: { id: req.params.id } })
-      .then(() => res.status(200).json({ message: "User Updated." }))
+      .then(() => res.status(200).json({ msg: "User Updated." }))
       .catch((err) => res.status(400).json({ err }));
   }
 };
 
 export const deleteUser = (req, res) => {
-  User.findOne(
-    { where: { id: req.params.id } },
-    { attributes: { exclude: ["password"] } }
-  )
-    .then(() => {
-      User.destroy({ where: { id: req.params.id } })
-        .then(() => res.status(200).json({ message: "User deleted." }))
-        .catch((err) => res.status(404).json({ err }));
-    })
-    .catch((err) => res.status(400).json({ err }));
+  User.destroy({ where: { id: req.params.id } })
+    .then(() => res.status(200).json({ msg: "User deleted." }))
+    .catch((err) => res.status(404).json({ err }));
 };

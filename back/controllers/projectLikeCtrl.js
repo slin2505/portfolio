@@ -18,13 +18,13 @@ export const likeDislikeProject = (req, res) => {
           user_id: req.body.userId,
           project_id: req.body.projectId,
         })
-          .then(() => res.status(201).json({ message: "+1 like" }))
+          .then(() => res.status(201).json({ msg: "+1 like" }))
           .catch((err) => res.status(400).json(err));
       } else {
         ProjectLike.destroy({
           where: { project_id: req.body.projectId, user_id: req.body.userId },
         })
-          .then(() => res.status(200).json({ message: "-1 like" }))
+          .then(() => res.status(200).json({ msg: "-1 like" }))
           .catch((err) => res.status(400).json({ err }));
       }
     })

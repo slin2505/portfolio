@@ -20,7 +20,7 @@ export const getAllProject = (req, res) => {
 };
 
 export const getOneProject = (req, res) => {
-  User.findOne({ where: { id: req.params.id } })
+  Project.findOne({ where: { id: req.params.id } })
     .then((project) => {
       if (project.image !== null) {
         const projectUrl = project.image;
@@ -50,7 +50,7 @@ export const createProject = (req, res) => {
   };
 
   Project.create(newProject)
-    .then(() => res.status(201).json({ message: "Project created." }))
+    .then(() => res.status(201).json({ msg: "Project created." }))
     .catch((err) => res.status(400).json({ err }));
 };
 
@@ -85,7 +85,7 @@ export const updateProject = (req, res) => {
   }
 
   Project.update(projectInfo, { where: { id: req.params.id } })
-    .then(() => res.status(200).json({ message: "Project updated." }))
+    .then(() => res.status(200).json({ msg: "Project updated." }))
     .catch((err) => res.status(400).json({ err }));
 };
 
@@ -100,7 +100,7 @@ export const deleteProject = (req, res) => {
         fs.unlink(project.image, () => {});
       }
       Project.destroy({ where: { id: req.params.id } })
-        .then(() => res.status(200).json({ message: "Project deleted." }))
+        .then(() => res.status(200).json({ msg: "Project deleted." }))
         .catch((err) => res.status(400).json({ err }));
     })
     .catch((err) => res.status(400).json({ err }));

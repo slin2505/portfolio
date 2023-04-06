@@ -10,10 +10,10 @@ import {
 
 const router = express.Router();
 
-// CRUD Project
+// CRUD Tag
 router.get("/", getAllTag);
-router.get("/groupby/:id", getProjectsForOneTag);
-router.get("/groupfor/:id", getTagsForOneProject);
+router.get("/groupBy/:name", getProjectsForOneTag);
+router.get("/groupFor/:name", getTagsForOneProject);
 router.post("/", createTag);
 router.put("/:id", updateTag);
 router.delete("/:id", deleteTag);

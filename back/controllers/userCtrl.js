@@ -4,9 +4,6 @@ import jwt from "jsonwebtoken";
 
 // Auth
 export const signUp = (req, res) => {
-  if (req.body.password === undefined) {
-    return res.status(400).json({ err: "Password can't be empty" });
-  }
   // hash using bcrypt lib
   bcrypt
     .hash(req.body.password, 10)

@@ -7,11 +7,12 @@ import {
   signUp,
   updateUser,
 } from "../controllers/userCtrl.js";
+import passwordSecurity from "../middlewares/passwordSecurity.js";
 
 const router = express.Router();
 
 // Auth
-router.post("/signup", signUp);
+router.post("/signup", passwordSecurity, signUp);
 router.post("/signin", signIn);
 
 // CRUD User

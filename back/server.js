@@ -16,6 +16,7 @@ dotenv.config();
 db.sync()
   .then(console.log("Connected to database"))
   .catch((err) => console.log(err));
+
 association();
 const app = express();
 app.use(express.json());

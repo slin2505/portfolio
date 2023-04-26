@@ -17,7 +17,6 @@ const Tag = db.define("tag", {
 
   color: {
     type: DataTypes.STRING,
-    validate: { isAlpha: true },
     allowNull: false,
   },
 });

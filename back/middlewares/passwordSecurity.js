@@ -1,6 +1,6 @@
-import PasswordValidator from "password-validator";
+import passwordValidator from "password-validator";
 
-const passwordSecurity = () => {
+const passwordSecurity = (req, res, next) => {
   try {
     if (req.body.password === undefined) {
       return res.status(400).json({ err: "Password can't be empty" });
@@ -16,7 +16,9 @@ const passwordSecurity = () => {
     if (schema.validate(req.body.password) === true) {
       next();
     } else {
-      return res.status(400).json(schema.validate(req.body.password));
+      return res
+        .status(400)
+        .json(schema.validate(req.body.password, { details: true }));
     }
   } catch (err) {
     res.status(401).json(err);

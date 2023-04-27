@@ -2,6 +2,7 @@ import { Flex, Avatar, Box, Container, Text, Button } from "@chakra-ui/react";
 import { MotionBox, MotionFlex } from "./Motion";
 import HeroHeader from "./HeroHeader";
 import { HashLink } from "react-router-hash-link";
+import Steven from "../assets/steven.PNG";
 
 const ANIMATION_DURATION = 1;
 
@@ -33,6 +34,7 @@ const Hero = () => {
               size="2xl"
               showBorder={true}
               borderColor={color}
+              src={Steven}
               aria-label="steven-avatar"
             />
           </MotionBox>

@@ -7,6 +7,7 @@ const theme = extendTheme({
         color: "quaternary",
       },
     },
+
     Input: {
       variants: {
         outline: {

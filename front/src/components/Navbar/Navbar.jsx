@@ -18,17 +18,25 @@ import NavLink from "./NavLink";
 import Logo from "../../assets/logo-icon.png";
 import { useContext } from "react";
 import { uidContext } from "../../../utils/uidContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 // We use a const Links here but usually in projects we make another file for routing properties
 
 const links = ["Home", "Comment"];
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { uid } = useContext(uidContext);
+  const { uid, setUid } = useContext(uidContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    Cookies.remove("jwt");
+    setUid("no token");
+    return navigate("/");
+  };
 
   return (
-    <Box as="header" bg="secondary" px={4} py={2}>
+    <Box bg="secondary" px={4} py={2}>
       <Flex
         as="navbar"
         h={16}
@@ -98,8 +106,10 @@ const Navbar = () => {
                 <Avatar size={"sm"} alt="avatar" />
               </MenuButton>
               <MenuList>
-                <MenuItem>Account</MenuItem>
-                <MenuItem>Log out</MenuItem>
+                <MenuItem as={Button}>Account</MenuItem>
+                <MenuItem as={Button} onClick={() => handleLogout()}>
+                  Log out
+                </MenuItem>
               </MenuList>
             </Menu>
           )}

@@ -48,7 +48,7 @@ const SignIn = () => {
   return (
     <Flex minH={"100vh"} align={"center"} justify={"center"}>
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
-        <Stack align={"center"}>
+        <Stack as="header" align={"center"}>
           <Heading as="h1" fontSize={"4xl"}>
             Sign In
           </Heading>
@@ -56,7 +56,8 @@ const SignIn = () => {
             and leave a cool comment ✌️
           </Text>
         </Stack>
-        <Box rounded={"xl"} bg="white" boxShadow={"lg"} p={8}>
+
+        <Box as="section" rounded={"xl"} bg="white" boxShadow={"lg"} p={8}>
           <Stack as="form" spacing={4} minW="300px">
             <FormControl id="email">
               <FormLabel>Email address</FormLabel>

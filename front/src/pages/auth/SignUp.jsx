@@ -60,7 +60,7 @@ const SignUp = () => {
   return (
     <Flex as="main" minH={"100vh"} align={"center"} justify={"center"}>
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={8}>
-        <Stack align={"center"}>
+        <Stack as="header" align={"center"}>
           {isVisible && (
             <Alert
               display="flex"
@@ -92,7 +92,8 @@ const SignUp = () => {
             and leave a cool comment ✌️
           </Text>
         </Stack>
-        <Box rounded={"xl"} bg="white" boxShadow={"lg"} p={8}>
+
+        <Box as="section" rounded={"xl"} bg="white" boxShadow={"lg"} p={8}>
           <Stack as="form" spacing={4} minW="300px">
             <FormControl id="Name" isRequired>
               <FormLabel>Name</FormLabel>

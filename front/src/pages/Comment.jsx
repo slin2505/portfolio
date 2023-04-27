@@ -1,5 +1,5 @@
 const Comment = () => {
-  return <div>comment</div>;
+  return <div>WIp</div>;
 };
 
 export default Comment;

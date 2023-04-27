@@ -34,6 +34,10 @@ const Projects = () => {
           </HeroHeader>
         </MotionBox>
       </Box>
+
+      <Box as="article" mb={5}>
+        <Text>Here some of the open-source/personal projects i realised :</Text>
+      </Box>
       {loading === false && (
         <SimpleGrid as="article" columns={{ sm: 1, md: 3 }} spacing="4">
           {projects.map((project, index) => {

@@ -4,16 +4,35 @@ import { Box, Flex, Heading, Link, Spacer, Text } from "@chakra-ui/layout";
 import { FaHeart } from "react-icons/fa";
 import PropTypes from "prop-types";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { uidContext } from "../../../utils/uidContext";
 
 const ProjectCard = ({ project }) => {
   const [like, setLike] = useState();
   const [loading, setLoading] = useState(true);
+  const { uid } = useContext(uidContext);
+
+  const handleLikeProject = async () => {
+    try {
+      const ids = {
+        userId: uid,
+        projectId: project.id,
+      };
+      await axios.post("/likeDislike", ids);
+      setLoading(true);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
     const handleLike = async () => {
-      const res = await axios.get(`getLikes/${project.id}`);
-      setLike(res.data.likes);
+      try {
+        const res = await axios.get(`getLikes/${project.id}`);
+        setLike(res.data.likes);
+      } catch (err) {
+        console.log(err);
+      }
     };
     if (loading) {
       handleLike();
@@ -51,6 +70,7 @@ const ProjectCard = ({ project }) => {
             colorScheme="red"
             size="sm"
             mr={2}
+            onClick={() => handleLikeProject()}
           />
           <Text fontSize="sm"> {like && like} Likes</Text>
           <Spacer />

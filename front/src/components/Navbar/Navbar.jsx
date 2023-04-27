@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import NavLink from "./NavLink";
-import Logo from "../../assets/logo-icon.png";
+import Logo from "../../assets/react.svg";
 import { useContext } from "react";
 import { uidContext } from "../../../utils/uidContext";
 import { Link, useNavigate } from "react-router-dom";
@@ -38,7 +38,7 @@ const Navbar = () => {
   return (
     <Box bg="secondary" px={4} py={2}>
       <Flex
-        as="navbar"
+        as="nav"
         h={16}
         alignItems={"center"}
         justifyContent={"space-between"}
@@ -52,7 +52,7 @@ const Navbar = () => {
         />
 
         <HStack spacing={8} alignItems={"center"}>
-          <Image src={Logo} alt="site-logo" width={90} />
+          <Image src={Logo} alt="site-logo" width={50} />
           <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
             {links.map((link) => (
               <NavLink key={link} link={link} />

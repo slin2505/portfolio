@@ -1,4 +1,4 @@
-import { Button, IconButton } from "@chakra-ui/button";
+import { Button } from "@chakra-ui/button";
 import { FormControl, FormLabel } from "@chakra-ui/form-control";
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/input";
 import {
@@ -6,13 +6,12 @@ import {
   Center,
   Container,
   Flex,
-  HStack,
   Text,
   VStack,
   Wrap,
   WrapItem,
 } from "@chakra-ui/layout";
-import { FaChevronUp, FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaChevronUp } from "react-icons/fa";
 import { MdLocationOn, MdEmail, MdOutlineEmail } from "react-icons/md";
 import { BsPerson } from "react-icons/bs";
 import { Textarea } from "@chakra-ui/textarea";
@@ -67,7 +66,6 @@ const Contact = () => {
                         leftIcon={<MdEmail color="white" size="20px" />}
                         href="mailto:slin2505@gmail.com"
                         target="_blank"
-                        referrerpolicy="no-referrer"
                       >
                         slin2505@gmail.com
                       </Button>
@@ -82,35 +80,11 @@ const Contact = () => {
                         leftIcon={<MdLocationOn color="#1970F1" size="20px" />}
                         href="https://www.linkedin.com/in/steven-lin-293997231/"
                         target="_blank"
-                        referrerpolicy="no-referrer"
                       >
                         Paris, France
                       </Button>
                     </VStack>
                   </Box>
-                  <HStack
-                    mt={{ lg: 10, md: 10 }}
-                    spacing={5}
-                    px={5}
-                    alignItems="flex-start"
-                  >
-                    <IconButton
-                      aria-label="github"
-                      variant="ghost"
-                      size="lg"
-                      isRound={true}
-                      _hover={{ bg: "tertiary" }}
-                      icon={<FaGithub size="28px" />}
-                    />
-                    <IconButton
-                      aria-label="linkedin"
-                      variant="ghost"
-                      size="lg"
-                      isRound={true}
-                      _hover={{ bg: "tertiary" }}
-                      icon={<FaLinkedin size="28px" />}
-                    />
-                  </HStack>
                 </Box>
               </WrapItem>
               <WrapItem>

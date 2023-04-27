@@ -8,8 +8,8 @@ import {
 const router = express.Router();
 
 // Like routing
-router.get("/getLikes", getLikeforProject);
-router.get("/likedByUser", likedByUser);
+router.get("/getLikes/:id", getLikeforProject);
+router.get("/likedByUser/:userId/:projectId", likedByUser);
 router.post("/likeDislike", likeDislikeProject);
 
 export default router;

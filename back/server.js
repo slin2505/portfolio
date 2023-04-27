@@ -12,6 +12,7 @@ import commentRoutes from "./routes/commentRoutes.js";
 import association from "./models/index.js";
 import getUserId from "./middlewares/getUserId.js";
 import cookieParser from "cookie-parser";
+import helmet from "helmet";
 
 dotenv.config();
 // connect to database
@@ -23,6 +24,8 @@ association();
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
+app.use(helmet());
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 // cors policy for security
 app.use(
   cors({

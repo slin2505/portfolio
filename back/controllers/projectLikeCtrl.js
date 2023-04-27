@@ -2,7 +2,7 @@ import ProjectLike from "../models/ProjectLike.js";
 
 // count project like by id
 export const getLikeforProject = (req, res) => {
-  ProjectLike.count({ where: { project_id: req.body.projectId } })
+  ProjectLike.count({ where: { project_id: req.params.id } })
     .then((likes) => res.status(200).json({ likes }))
     .catch((err) => res.status(400).json({ err }));
 };
@@ -34,7 +34,7 @@ export const likeDislikeProject = (req, res) => {
 // if not null = liked
 export const likedByUser = (req, res) => {
   ProjectLike.findOne({
-    where: { project_id: req.body.projectId, user_id: req.body.userId },
+    where: { project_id: req.params.projectId, user_id: req.params.userId },
   })
     .then((result) => res.status(200).json({ result }))
     .catch((err) => res.status(400).json({ err }));

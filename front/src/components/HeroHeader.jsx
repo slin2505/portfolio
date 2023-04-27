@@ -39,7 +39,7 @@ const UnderlinedText = ({ children, color, h }) => (
 UnderlinedText.propTypes = {
   children: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
-  h: PropTypes.string.isRequired,
+  h: PropTypes.string,
 };
 
 export default HeroHeader;

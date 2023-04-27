@@ -3,6 +3,7 @@ import Hero from "../components/Hero";
 import About from "../components/About";
 import Skills from "../components/Skills";
 import Contact from "../components/Contact";
+import Projects from "../components/Projects/Projects";
 
 const Home = () => {
   return (
@@ -34,6 +35,16 @@ const Home = () => {
       <Flex
         as="section"
         id="contact"
+        minH={"80vh"}
+        align={"center"}
+        justify={"center"}
+      >
+        <Projects />
+      </Flex>
+
+      <Flex
+        as="section"
+        id="projects"
         minH={"80vh"}
         align={"center"}
         justify={"center"}

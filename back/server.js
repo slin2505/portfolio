@@ -10,6 +10,8 @@ import projectLikeRoutes from "./routes/projectLikeRoutes.js";
 import tagRoutes from "./routes/tagRoutes.js";
 import commentRoutes from "./routes/commentRoutes.js";
 import association from "./models/index.js";
+import getUserId from "./middlewares/getUserId.js";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 // connect to database
@@ -20,7 +22,7 @@ db.sync()
 association();
 const app = express();
 app.use(express.json());
-
+app.use(cookieParser());
 // cors policy for security
 app.use(
   cors({
@@ -38,6 +40,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 app.use("/images", express.static(path.join(__dirname, "images")));
 
 // Routes
+app.get("/jwtuid", getUserId, (req, res) => {
+  res.status(200).json(res.locals.userId);
+});
+
 app.use("/user", userRoutes);
 app.use("/project", projectRoutes);
 app.use("/", projectLikeRoutes);

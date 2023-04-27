@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 
 // Auth
 export const signUp = (req, res) => {
+  console.log(req.body.name);
   // hash using bcrypt lib
   bcrypt
     .hash(req.body.password, 10)
@@ -36,7 +37,9 @@ export const signIn = (req, res) => {
               return res.status(401).json({ err: "Wrong password!" });
             } else {
               return res.status(200).json({
-                userId: user.id,
+                id: user.id,
+                name: user.name,
+                email: user.email,
                 token: jwt.sign(
                   { userId: user.id, isAdmin: user.is_admin },
                   process.env.passwordToken,
